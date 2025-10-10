@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #0b0b0b 100%);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-sky-blue/20;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-sky-blue to-blue-500 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sky-blue/30 hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-sky-blue text-sky-blue px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-sky-blue hover:text-white hover:scale-105;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
