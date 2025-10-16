@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,8 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'sky-blue': '#7dd3fc',
+        'sky-blue': '#45B7D1',
+        'warm-coral': '#FF6B6B',
+        'warm-orange': '#FF8C42',
+        'warm-cream': '#FFF8F0',
         'deep-black': '#0b0b0b',
+        'deep-navy': '#1A1D29',
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],

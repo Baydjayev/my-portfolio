@@ -1,13 +1,53 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useI18n } from '../contexts/I18nContext.tsx'
 
 const Hero = () => {
+  const { t } = useI18n()
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
+  // Typing effect for professional title
+  const fullTitle = t('hero_title')
+  const [typed, setTyped] = useState('')
+  useEffect(() => {
+    setTyped('')
+    let i = 0
+    const interval = setInterval(() => {
+      i += 1
+      setTyped(fullTitle.slice(0, i))
+      if (i >= fullTitle.length) clearInterval(interval)
+    }, 40)
+    return () => clearInterval(interval)
+  }, [fullTitle])
+
+  // Animated counters
+  const statsRef = useRef(null)
+  const statsInView = useInView(statsRef, { once: true, margin: '-100px' })
+  const stats = useMemo(() => ([
+    { value: 1, suffix: '+', label: t('stats_experience') },
+    { value: 8, suffix: '+', label: t('stats_projects') },
+    { value: 10, suffix: '+', label: t('stats_students') },
+    { value: 2, suffix: '', label: t('stats_institutions') },
+  ]), [t])
+  const [counts, setCounts] = useState([0, 0, 0, 0])
+  useEffect(() => {
+    if (!statsInView) return
+    const durations = [900, 900, 900, 900]
+    const start = performance.now()
+    const anim = () => {
+      const now = performance.now()
+      const progress = durations.map((d) => Math.min(1, (now - start) / d))
+      setCounts(progress.map((p, idx) => Math.floor(p * stats[idx].value)))
+      if (progress.some((p) => p < 1)) requestAnimationFrame(anim)
+    }
+    requestAnimationFrame(anim)
+  }, [statsInView, stats])
 
   return (
     <section id="hero" className="min-h-screen flex items-center gradient-bg relative overflow-hidden">
@@ -55,11 +95,11 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-black mb-6 leading-tight"
             >
-              Hi, I'm{' '}
-              <span className="text-sky-blue">Baydjayev Mulkomon</span>
+              {t('hero_greeting')}{' '}
+              <span className="text-warm-orange">Baydjayev Mulkomon</span>
               <br />
               <span className="text-2xl md:text-3xl lg:text-4xl font-medium">
-                Telegram Bot & Web Developer
+                {typed}
               </span>
             </motion.h1>
             
@@ -84,7 +124,7 @@ const Hero = () => {
                 onClick={() => scrollToSection('contact')}
                 className="btn-primary"
               >
-                Contact Me
+                {t('cta_contact_me')}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -92,7 +132,7 @@ const Hero = () => {
                 onClick={() => scrollToSection('projects')}
                 className="btn-secondary"
               >
-                View Projects
+                {t('cta_view_projects')}
               </motion.button>
             </motion.div>
           </motion.div>
@@ -125,6 +165,23 @@ const Hero = () => {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+        {/* Stats */}
+        <div ref={statsRef} className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={statsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="backdrop-blur bg-white/40 dark:bg-white/10 border border-white/40 dark:border-white/10 rounded-xl p-6 text-center shadow-sm"
+            >
+              <div className="text-3xl md:text-4xl font-extrabold text-warm-orange">
+                {counts[i]}{counts[i] >= stats[i].value ? stats[i].suffix : ''}
+              </div>
+              <div className="text-sm mt-1 opacity-80">{s.label}</div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

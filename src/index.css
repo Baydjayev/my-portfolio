@@ -10,12 +10,13 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
+    @apply bg-warm-cream text-deep-black dark:bg-deep-navy dark:text-white;
   }
 }
 
 @layer components {
   .gradient-bg {
-    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #0b0b0b 100%);
+    background: linear-gradient(135deg, #FFF8F0 0%, #FF8C42 35%, #FF6B6B 65%, #45B7D1 100%);
     background-size: 200% 200%;
     animation: gradient 8s ease infinite;
   }
@@ -25,11 +26,11 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-sky-blue to-blue-500 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sky-blue/30 hover:scale-105;
+    @apply bg-gradient-to-r from-warm-orange to-warm-coral text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-warm-coral/30 hover:scale-105;
   }
   
   .btn-secondary {
-    @apply border-2 border-sky-blue text-sky-blue px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-sky-blue hover:text-white hover:scale-105;
+    @apply border-2 border-warm-orange text-warm-orange px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-warm-orange hover:text-white hover:scale-105;
   }
   
   .section-padding {

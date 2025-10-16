@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '../contexts/ThemeContext.tsx'
+import { useI18n } from '../contexts/I18nContext.tsx'
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { theme, toggleTheme } = useTheme()
+  const { t, lang, setLang } = useI18n()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +24,9 @@ const Navigation = () => {
   }
 
   const navItems = [
-    { name: 'About', id: 'about' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Contact', id: 'contact' }
+    { name: t('nav_about'), id: 'about' },
+    { name: t('nav_projects'), id: 'projects' },
+    { name: t('nav_contact'), id: 'contact' }
   ]
 
   return (
@@ -60,15 +64,40 @@ const Navigation = () => {
               </motion.button>
             ))}
           </div>
-          
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('contact')}
-            className="btn-primary text-sm"
-          >
-            Get In Touch
-          </motion.button>
+
+          <div className="flex items-center gap-3">
+            <select
+              aria-label="Language selector"
+              value={lang}
+              onChange={(e) => setLang(e.target.value)}
+              className="border border-warm-orange/50 rounded-md px-2 py-1 text-sm bg-white/70 backdrop-blur dark:bg-deep-navy/70"
+            >
+              <option value="tk">🇹🇲 Türkmen</option>
+              <option value="uz">🇺🇿 O'zbek</option>
+              <option value="tr">🇹🇷 Türkçe</option>
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="en">🇬🇧 English</option>
+            </select>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleTheme}
+              className="border border-warm-orange/50 rounded-md px-3 py-2 text-sm bg-white/70 backdrop-blur dark:bg-deep-navy/70"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection('contact')}
+              className="btn-primary text-sm"
+            >
+              {t('nav_contact')}
+            </motion.button>
+          </div>
         </div>
       </div>
     </motion.nav>
