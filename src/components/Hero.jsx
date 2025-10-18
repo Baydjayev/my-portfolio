@@ -145,21 +145,22 @@ const Hero = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
+              {/* Gradient rectangular ring */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-r from-sky-blue via-white to-deep-black rounded-full p-1"
+                className="absolute -inset-2 rounded-2xl p-1 bg-gradient-to-br from-warm-orange to-sky-blue opacity-80 blur-sm"
               />
+
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-gradient-to-br from-sky-blue/20 to-deep-black/20 flex items-center justify-center"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative w-72 h-96 lg:w-80 lg:h-104 rounded-2xl overflow-hidden bg-gradient-to-br from-sky-blue/10 to-warm-orange/10 flex items-start justify-center shadow-2xl"
               >
-                {/* Profile Image */}
+                {/* Make the image fill the inner frame with no gap */}
                 <img
-                  src="/assets/profile-image.jpg"
+                  src="/assets/mulkomon.jpg"
+                  onError={(e) => { e.currentTarget.src = '/assets/profile-image.jpg' }}
                   alt="Baydjayev Mulkomon - Profile Picture"
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover object-top rounded-2xl border-0"
                   loading="eager"
                 />
               </motion.div>

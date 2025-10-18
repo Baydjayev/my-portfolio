@@ -18,8 +18,8 @@ const About = () => {
   ]
 
   const education = [
-    { year: 'Sep 2025 - Present', title: 'Polytechnic Institute', description: 'Computer Science / Programming' },
-    { year: 'Sep 2024 - Present', title: 'Al-Khorezmi Vorislari (IT Academy)', description: 'Backend Development & Telegram Bots' },
+    { year: 'Sep 2025 - Present', title: t('edu_polytechnic'), description: 'Computer Science / Programming' },
+  { year: 'Sep 2024 - Present', title: 'Al-Xorazmiy Vorislari (IT Park)', description: 'Backend Development & Telegram Bots' },
     { year: 'Sep 2016 - 2025', title: 'Secondary School', description: 'General secondary education' },
   ]
 
