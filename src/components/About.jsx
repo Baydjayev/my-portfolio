@@ -34,10 +34,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-black dark:text-white mb-6">
-            {t('about_heading')} <span className="text-warm-orange">Me</span>
+            {t('about_heading')}
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            I specialize in building Telegram bots using Aiogram and creating modern websites. Currently studying and teaching programming to 10+ students while developing innovative projects.
+            {t('about_paragraph')}
           </p>
         </motion.div>
 

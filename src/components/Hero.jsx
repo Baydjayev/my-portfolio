@@ -109,7 +109,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl"
             >
-              I build smart bots and web solutions that automate tasks and look great.
+              {t('hero_subtitle')}
             </motion.p>
             
             <motion.div

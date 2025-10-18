@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useI18n } from '../contexts/I18nContext.tsx'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const { t } = useI18n()
 
   const socialLinks = [
     {
@@ -47,7 +49,8 @@ const Footer = () => {
               className="text-center md:text-left"
             >
               <p className="text-gray-300">
-                © {currentYear} Baydjayev Mulkomon | Built with ❤️ using React & Tailwind
+                © {currentYear} Baydjayev Mulkomon | { /* keep branding text translated where useful */ }
+                {t('built_with')}
               </p>
             </motion.div>
 
@@ -83,7 +86,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center md:text-right"
             >
-              <motion.button
+                <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -92,7 +95,7 @@ const Footer = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
                 </svg>
-                Back to Top
+                {t('back_to_top')}
               </motion.button>
             </motion.div>
           </div>
@@ -106,14 +109,14 @@ const Footer = () => {
           >
             <div className="text-center text-gray-400 text-sm">
               <p>
-                Designed and developed with modern web technologies. 
+                {t('view_source')}: 
                 <a 
                   href="https://github.com/Baydjayev/Baydjayev.github.io" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-sky-blue hover:text-white transition-colors ml-1"
                 >
-                  View source code
+                  {t('view_source')}
                 </a>
               </p>
             </div>

@@ -76,7 +76,7 @@ const Contact = () => {
             {t('contact_heading')}
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
-            Reach out on Telegram or send an email — I usually reply within 48 hours.
+            {t('contact_paragraph')}
           </p>
         </motion.div>
 
@@ -87,12 +87,8 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold text-deep-black dark:text-white mb-8">Let's Connect</h3>
-            <p className="text-gray-700 mb-8">
-              I'm always interested in new opportunities and exciting projects. 
-              Whether you need a Telegram bot, a web application, or just want to chat about technology, 
-              feel free to reach out!
-            </p>
+            <h3 className="text-2xl font-bold text-deep-black dark:text-white mb-8">{t('contact_connect_heading')}</h3>
+            <p className="text-gray-700 mb-8">{t('contact_connect_text')}</p>
             
             <div className="space-y-6">
               {socialLinks.map((social, index) => (
@@ -111,12 +107,12 @@ const Contact = () => {
                     {social.icon}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-deep-black dark:text-white">{social.name}</h4>
-                     <p className="text-gray-600 text-sm">
-                       {social.name === 'Email' ? 'itmulkomon@gmail.com' : 
-                        social.name === 'Telegram' ? '@Baydjayev' : 
-                        'github.com/Baydjayev'}
-                     </p>
+                      <h4 className="font-semibold text-deep-black dark:text-white">{social.name}</h4>
+                         <p className="text-gray-600 text-sm">
+                           {social.name === 'Email' ? 'itmulkomon@gmail.com' : 
+                            social.name === 'Telegram' ? '@Baydjayev' : 
+                            'github.com/Baydjayev'}
+                         </p>
                   </div>
                 </motion.a>
               ))}
@@ -134,7 +130,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-deep-black mb-2">
-                  Name
+                  {t('placeholder_name')}
                 </label>
                 <input
                   type="text"
@@ -150,7 +146,7 @@ const Contact = () => {
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-deep-black mb-2">
-                  Email
+                  {t('placeholder_email')}
                 </label>
                 <input
                   type="email"
@@ -166,7 +162,7 @@ const Contact = () => {
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-deep-black mb-2">
-                  Message
+                  {t('placeholder_message')}
                 </label>
                 <textarea
                   id="message"
@@ -176,7 +172,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-warm-orange/30 rounded-lg focus:ring-2 focus:ring-warm-orange/50 focus:border-warm-orange transition-colors resize-none"
-                  placeholder="Tell me about your project or just say hello!"
+                  placeholder={t('placeholder_message')}
                 />
               </div>
               
