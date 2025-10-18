@@ -83,7 +83,7 @@ const Projects = () => {
   const filtered = activeCat === 'All' ? projects : projects.filter(p => p.category === activeCat)
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-br from-sky-blue/5 to-white">
+  <section id="projects" className="section-padding bg-gradient-to-br from-sky-blue/5 to-white dark:bg-gradient-to-br dark:from-deep-navy/10 dark:to-deep-navy/6">
       <div className="container-max">
         <motion.div
           ref={ref}
@@ -92,10 +92,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-deep-black dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-deep-black dark:text-white mb-6 dark:antialiased dark:leading-tight dark:text-opacity-100 dark:shadow-[0_1px_0_rgba(0,0,0,0.6)]">
             {t('projects_heading')}
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-white max-w-3xl mx-auto dark:antialiased dark:text-opacity-100">
             {t('projects_intro')}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
