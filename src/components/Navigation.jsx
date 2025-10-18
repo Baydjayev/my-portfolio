@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext.tsx'
 import { useI18n } from '../contexts/I18nContext.tsx'
+import LanguageSelector from './LanguageSelector'
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -66,18 +67,10 @@ const Navigation = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <select
-              aria-label="Language selector"
-              value={lang}
-              onChange={(e) => setLang(e.target.value)}
-              className="border border-warm-orange/50 rounded-md px-2 py-1 text-sm bg-white/70 backdrop-blur dark:bg-deep-navy/70"
-            >
-              <option value="tk">🇹🇲 Türkmen</option>
-              <option value="uz">🇺🇿 O'zbek</option>
-              <option value="tr">🇹🇷 Türkçe</option>
-              <option value="ru">🇷🇺 Русский</option>
-              <option value="en">🇬🇧 English</option>
-            </select>
+            {/* Replaced native select with LanguageSelector to show flag icons across platforms */}
+            <div className="hidden md:block">
+              <LanguageSelector />
+            </div>
 
             <motion.button
               whileHover={{ scale: 1.05 }}

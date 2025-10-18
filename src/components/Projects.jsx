@@ -114,7 +114,7 @@ const Projects = () => {
                 <button
                   key={cat}
                   onClick={() => setActiveCat(cat)}
-                  className={`px-4 py-2 rounded-full border text-sm transition-all ${activeCat === cat ? 'bg-warm-orange text-white border-warm-orange' : 'border-warm-orange/40 text-deep-black dark:text-white hover:bg-warm-orange/10'}`}
+                  className={`px-4 py-2 rounded-full text-sm transition-colors duration-150 flex items-center gap-2 ${activeCat === cat ? 'bg-warm-orange text-white border border-warm-orange shadow-md' : 'bg-white/70 dark:bg-gray-800 text-deep-black dark:text-gray-200 border border-gray-200 dark:border-gray-700 hover:bg-white/90 dark:hover:bg-gray-700'}`}
                 >
                   {label}
                 </button>
